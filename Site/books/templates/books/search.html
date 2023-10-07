@@ -1,0 +1,20 @@
+{% extends 'books/layouts/base.html'%}
+{% load static %}
+
+{% block title%} Product info {%endblock%}
+{% block content %}
+
+{% for result in results %}
+
+<div class="content-section">
+    <div class="media">
+      <img class="rounded-circle account-img" src="{{ result.profile.get_image_url }}">
+      <div class="media-body">
+        <h2 class="account-heading">{{result.username }}</h2>
+        <p class="text-secondary">{{ result.email }}</p>
+      </div>
+{% endfor%}
+
+
+
+{% endblock %}

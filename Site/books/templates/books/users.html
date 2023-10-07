@@ -1,0 +1,22 @@
+{% extends "books/layouts/base.html" %}
+{%load static %}
+
+{% block content %}
+
+
+
+<div>
+    {% for item in use%}
+     {% if item.is_superuser %}
+     
+     {% else %}
+     <form action="{% url 'show-borrow' %}" method="POST">
+        {% csrf_token %} 
+        <input type="number" name="id" value="{{item.id}}">-{{item.username}}
+        <input type="submit" name="submit" value="books">
+    </form>
+     {% endif %}
+    {% endfor %}
+</div>
+<!--<a href="{% url 'show-borrow' %}"> {{item.username}}</a>-->
+{% endblock %}

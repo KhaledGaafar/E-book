@@ -1,0 +1,29 @@
+show
+{% extends 'books/layouts/base.html'%}
+{% load static %}
+
+{% block title%} Product info {%endblock%}
+
+
+{% block content %}
+
+
+<div class="bg-light">
+  <h1> product {{book.name}} Info </h1>
+
+  <div   class="card" style="width: 18rem;">
+      <img src="{{book.get_image_url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+          <h5 class="card-title">{{book.name}}</h5>
+          <h4 class="card-title">Price: {{book.price}}</h4>
+          <p class="card-title">Description: {{book.description}}</p>
+          <p class="card-title">Created at: {{book.created_at}}</p>
+          <p class="card-title">Updated ar: {{book.updated_at}}</p>
+          <form method="post" enctype="multipart/form-data">
+            <a href="{{book.get_borrow_url}}" class="btn btn-primary">borrow</a>
+               
+          <a href="{% url 'books-home'%}" class="btn btn-primary">Back to all products</a>
+      </div>
+  </div>
+</div>
+{% endblock %}

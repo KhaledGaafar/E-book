@@ -1,0 +1,50 @@
+
+{% extends 'books/layouts/base.html' %}
+
+{% block title%} students page {% endblock%}
+
+{% block content %}
+
+
+{% if user.is_superuser %}
+
+<a href="{% url 'create' %}" class="btn btn-primary">Add new product</a>
+
+
+{% for student in book %}
+
+<div style="display:inline-block">
+
+    <div class="card" style="width: 18rem;">
+  <img src="{{student.get_image_url}}" width="200" height="200" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <a href="{{student.get_show_url}}" class="btn btn-primary">Show</a>
+    <a href="{{student.get_update_url}}" class="btn btn-primary">update</a>
+    <a href="{{student.get_delete_url}}" class="btn btn-primary">Delet</a>
+
+    
+  </div>
+</div>
+    </div>
+{% endfor %}
+
+{% else %}
+
+{% for student in book %}
+
+<div style="display:inline-block">
+
+    <div class="card" style="width: 18rem;">
+  <img src="{{student.get_image_url}}" width="200" height="200" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <a href="{{student.get_show_url}}" class="btn btn-primary">Show</a>
+
+  </div>
+</div>
+    </div>
+{% endfor %}
+
+{% endif %}
+{% endblock %}

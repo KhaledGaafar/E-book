@@ -1,0 +1,27 @@
+{% extends 'books/layouts/base.html'  %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block title %}  Login  {% endblock %}
+
+{% block content %}
+<div class="bg-light">
+    <h1> Login </h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{form|crispy}}
+
+
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">login</button>
+        </div>
+    </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'register' %}">Sign Up Now</a>
+        </small>
+    </div>
+
+</div>
+<script src="{% static 'books/js/script.js'%}"> </script>
+{% endblock %}
